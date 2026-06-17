@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Request a demo of FlexiRates or get in touch with our team. We work with Australian councils to modernise rate payment options for ratepayers." />
+  <meta property="og:title" content="Contact FlexiRates — Request a Demo" />
+  <meta property="og:description" content="Request a personalised demo of FlexiRates. See how we can help your council offer modern, flexible rate payment options." />
+  <meta property="og:type" content="website" />
+  <title>Contact — FlexiRates</title>
+  <link rel="icon" type="image/png" href="assets/Flexirates Favicon.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Navigation -->
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="site-nav__inner">
+      <a href="index.html" class="nav-logo" aria-label="FlexiRates home">
+        <img src="assets/FR 1 no bg.png" alt="FlexiRates" class="nav-logo__img" />
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="for-councils.html">For Councils</a></li>
+        <li><a href="for-ratepayers.html">For Ratepayers</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="btn btn-primary btn--sm active">Request Demo</a></li>
+      </ul>
+      <button class="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="nav-mobile" role="dialog" aria-label="Mobile navigation">
+    <ul role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="for-councils.html">For Councils</a></li>
+      <li><a href="for-ratepayers.html">For Ratepayers</a></li>
+      <li><a href="security.html">Security</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary active">Request Demo</a>
+  </div>
+
+  <main id="main-content">
+
+    <!-- =========================================================
+         HERO
+         ========================================================= -->
+    <section class="hero hero--inner" style="min-height: 320px; padding-top: calc(var(--nav-height) + var(--space-12)); padding-bottom: var(--space-12);" aria-labelledby="hero-heading">
+      <div class="hero__wedge--back" aria-hidden="true"></div>
+      <div class="hero__wedge" aria-hidden="true"></div>
+      <div class="hero__inner">
+        <div class="hero__content">
+          <span class="hero__eyebrow">Request a Demo</span>
+          <h1 class="hero__title" id="hero-heading">Get in touch with <span class="highlight">FlexiRates.</span></h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         CONTACT FORM + INFO
+         ========================================================= -->
+    <section class="section" aria-labelledby="contact-form-heading">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- Form Column -->
+          <div>
+            <h2 class="sr-only" id="contact-form-heading">Request a Demo Form</h2>
+
+            <!-- Success Message -->
+            <div class="form__success" id="form-success" role="alert" aria-live="polite">
+              <div class="form__success-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <h3 style="color: var(--color-navy); font-size: var(--font-size-2xl); margin-bottom: var(--space-3);">Request Received</h3>
+              <p style="color: var(--color-text); line-height: var(--line-height-relaxed);">Thank you for your enquiry. A member of the FlexiRates team will be in touch soon.</p>
+            </div>
+
+            <form class="form fade-in" id="contact-form" novalidate aria-label="Request a demo">
+              <div class="form__row">
+                <div class="form__group">
+                  <label class="form__label form__label--required" for="first-name">First Name</label>
+                  <input
+                    class="form__input"
+                    type="text"
+                    id="first-name"
+                    name="first-name"
+                    autocomplete="given-name"
+                    placeholder="Jane"
+                    data-required
+                    aria-describedby="first-name-error"
+                    aria-required="true"
+                  />
+                  <span class="form__error" id="first-name-error" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="form__group">
+                  <label class="form__label form__label--required" for="last-name">Last Name</label>
+                  <input
+                    class="form__input"
+                    type="text"
+                    id="last-name"
+                    name="last-name"
+                    autocomplete="family-name"
+                    placeholder="Smith"
+                    data-required
+                    aria-describedby="last-name-error"
+                    aria-required="true"
+                  />
+                  <span class="form__error" id="last-name-error" role="alert" aria-live="polite"></span>
+                </div>
+              </div>
+
+              <div class="form__group">
+                <label class="form__label form__label--required" for="email">Work Email</label>
+                <input
+                  class="form__input"
+                  type="email"
+                  id="email"
+                  name="email"
+                  autocomplete="email"
+                  placeholder="jane.smith@council.vic.gov.au"
+                  data-required
+                  aria-describedby="email-error"
+                  aria-required="true"
+                />
+                <span class="form__error" id="email-error" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="form__group">
+                <label class="form__label" for="phone">Phone Number</label>
+                <input
+                  class="form__input"
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  autocomplete="tel"
+                  placeholder="03 9000 0000"
+                />
+              </div>
+
+              <div class="form__group">
+                <label class="form__label form__label--required" for="council-name">Council Name</label>
+                <input
+                  class="form__input"
+                  type="text"
+                  id="council-name"
+                  name="council-name"
+                  placeholder="e.g. Cardinia Shire Council"
+                  data-required
+                  aria-describedby="council-name-error"
+                  aria-required="true"
+                />
+                <span class="form__error" id="council-name-error" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="form__group">
+                <label class="form__label" for="job-title">Job Title or Role</label>
+                <input
+                  class="form__input"
+                  type="text"
+                  id="job-title"
+                  name="job-title"
+                  placeholder="e.g. Rates Manager, Finance Manager"
+                  autocomplete="organization-title"
+                />
+              </div>
+
+              <div class="form__group">
+                <label class="form__label" for="message">Message</label>
+                <textarea
+                  class="form__textarea"
+                  id="message"
+                  name="message"
+                  placeholder="Tell us about your council's current rate payment setup and what you are looking to achieve with FlexiRates."
+                  aria-describedby="message-hint"
+                ></textarea>
+                <span id="message-hint" class="form__error" style="display:none;"></span>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn--lg form__submit">
+                Send Request
+                <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+              </button>
+
+              <p class="form__note">
+                All enquiries are treated confidentially.
+              </p>
+            </form>
+          </div>
+
+          <!-- Info Column -->
+          <div class="contact-info fade-in fade-in--delay-1">
+            <h2 class="contact-info__title">Request a Personalised Demo</h2>
+            <p class="contact-info__text">
+              Fill in the form to request a demonstration of FlexiRates. We will arrange a time to walk through both the ratepayer portal and the council admin dashboard, and discuss how the platform can be configured for your council's specific requirements.
+            </p>
+
+            <div class="contact-expect">
+              <div class="contact-expect__title">What to Expect</div>
+              <ul class="check-list check-list--navy">
+                <li>A live demonstration of the ratepayer portal</li>
+                <li>A walkthrough of the council admin dashboard</li>
+                <li>Discussion of configuration options for your council</li>
+                <li>Answers to your security and compliance questions</li>
+                <li>No obligation — it is just a conversation</li>
+              </ul>
+            </div>
+
+            <div class="contact-methods">
+              <div class="contact-method">
+                <div class="contact-method__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div>
+                  <div class="contact-method__label">Email</div>
+                  <div class="contact-method__value">
+                    <a href="mailto:sales@billbuddy.com" style="color: var(--color-navy);">sales@billbuddy.com</a>
+                  </div>
+                </div>
+              </div>
+              <div class="contact-method">
+                <div class="contact-method__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div>
+                  <div class="contact-method__label">Location</div>
+                  <div class="contact-method__value">Australia</div>
+                </div>
+              </div>
+              <div class="contact-method">
+
+                
+              </div>
+            </div>
+
+            <!-- Already a council using FlexiRates -->
+            <div style="margin-top: var(--space-8); padding: var(--space-6) 0; border-top: 3px solid var(--color-navy);">
+              <p style="font-size: var(--fs-xs); font-weight: 600; color: var(--color-orange); margin-bottom: var(--space-3); text-transform: uppercase; letter-spacing: 0.06em;">Already using FlexiRates?</p>
+              <p style="font-size: var(--fs-base); color: var(--color-text); line-height: var(--line-relaxed); max-width: 50ch;">If you are a ratepayer or council staff member with a question about an existing FlexiRates account, please contact your council directly. Council rates teams have access to the admin portal to assist with account enquiries.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         ALTERNATIVE CONTACT
+         ========================================================= -->
+    <section class="section section--bg section--sm" aria-labelledby="alt-contact-heading">
+      <div class="container">
+        <div class="section-header section-header--center">
+          <p class="section-label">Other Ways to Connect</p>
+          <h2 class="section-title" id="alt-contact-heading">Not sure where to start?</h2>
+          <p class="section-subtitle">Whichever describes you best, we'll make sure your enquiry reaches the right person.</p>
+        </div>
+        <div class="connect-grid fade-in">
+          <a href="contact.html#contact-form" class="connect-card">
+            <div class="connect-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><line x1="9" y1="9" x2="9" y2="9.01"/><line x1="9" y1="13" x2="9" y2="13.01"/></svg>
+            </div>
+            <h3 class="connect-card__title">Councils</h3>
+            <p class="connect-card__text">Exploring FlexiRates for your council, or want to see a demo.</p>
+            <span class="connect-card__cta">Request a demo
+              <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+            </span>
+          </a>
+          <a href="security.html" class="connect-card">
+            <div class="connect-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            </div>
+            <h3 class="connect-card__title">IT, Risk &amp; Procurement</h3>
+            <p class="connect-card__text">Questions about our security, compliance, and data handling.</p>
+            <span class="connect-card__cta">View security approach
+              <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+            </span>
+          </a>
+          <a href="mailto:sales@billbuddy.com" class="connect-card">
+            <div class="connect-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </div>
+            <h3 class="connect-card__title">Partnerships</h3>
+            <p class="connect-card__text">Partnering with FlexiRates or Bill Buddy on payment solutions.</p>
+            <span class="connect-card__cta">Email our team
+              <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+            </span>
+          </a>
+        </div>
+        <p class="connect-footnote">
+          Prefer email? Reach us any time at <a href="mailto:sales@billbuddy.com">sales@billbuddy.com</a>.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo" aria-label="FlexiRates home">
+            <img src="assets/FR 1 no bg.png" alt="FlexiRates" class="footer__logo-img" />
+          </a>
+          <p class="footer__tagline">Flexible rate payment solutions for Australian councils. Secure, modern, and built for local government.</p>
+          <p class="footer__powered">Powered by Bill Buddy</p>
+        </div>
+        <div>
+          <div class="footer__nav-title">Platform</div>
+          <ul class="footer__nav-list">
+            <li><a href="for-councils.html">For Councils</a></li>
+            <li><a href="for-ratepayers.html">For Ratepayers</a></li>
+            <li><a href="security.html">Security</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__nav-title">Company</div>
+          <ul class="footer__nav-list">
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html">Request Demo</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__legal">Copyright &copy; 2024 FlexiRates. Powered by Bill Buddy. All rights reserved.</p>
+        <ul class="footer__legal-links">
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
