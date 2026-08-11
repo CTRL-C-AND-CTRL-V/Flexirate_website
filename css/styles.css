@@ -4842,23 +4842,31 @@ p {
 .post-card__link:hover { color: var(--color-orange-deep); }
 
 /* =========================================================
-   NAV ACTIVE STATE — keep the current-page label legible over the
-   navy hero AND the orange brand wedge while the nav is transparent.
+   NAV ACTIVE STATE — indicate the current page with an underline that
+   stays visible on every nav background (navy hero, orange wedge, and the
+   white nav after scrolling). No background box, so nothing is masked.
    ========================================================= */
+/* Transparent nav (over the hero): white text + white underline */
 .nav-links a.active:not(.btn) {
   color: #fff;
-  background: rgba(15, 19, 64, 0.6);
-  padding-left: 12px;
-  padding-right: 12px;
-  border-radius: 999px;
+}
+.nav-links a.active:not(.btn)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: #fff;
 }
 .nav-links a.active:not(.btn):hover {
   color: #fff;
 }
-/* Once scrolled the nav is solid white, so revert to the orange text treatment */
+/* Scrolled nav (solid white): orange text + orange underline */
 .site-nav.scrolled .nav-links a.active:not(.btn) {
   color: var(--color-orange);
-  background: transparent;
-  padding-left: 0;
-  padding-right: 0;
+}
+.site-nav.scrolled .nav-links a.active:not(.btn)::after {
+  background: var(--color-orange);
 }
