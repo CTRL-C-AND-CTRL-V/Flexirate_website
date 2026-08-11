@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="What PCI DSS means for councils taking card payments for rates, who is responsible for what, and how tokenisation reduces risk by cutting card data handling." />
+  <meta property="og:title" content="PCI DSS Compliance for Council Payment Platforms, Explained" />
+  <meta property="og:description" content="What PCI DSS means for councils taking card payments for rates, who is responsible for what, and how tokenisation reduces risk." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.flexirates.com.au/blog/pci-dss-compliance-council-payments-explained.html" />
+  <meta property="og:site_name" content="FlexiRates" />
+  <meta property="og:locale" content="en_AU" />
+  <meta property="og:image" content="https://www.flexirates.com.au/assets/FR%201%20no%20bg.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PCI DSS Compliance for Council Payment Platforms, Explained" />
+  <meta name="twitter:description" content="What PCI DSS means for councils taking card payments for rates, who is responsible for what, and how tokenisation reduces risk." />
+  <meta name="twitter:image" content="https://www.flexirates.com.au/assets/FR%201%20no%20bg.png" />
+  <meta name="theme-color" content="#1a1f5e" />
+  <title>PCI DSS Compliance for Council Payment Platforms, Explained | FlexiRates</title>
+  <link rel="canonical" href="https://www.flexirates.com.au/blog/pci-dss-compliance-council-payments-explained.html" />
+  <link rel="icon" type="image/png" href="../assets/Flexirates Favicon.png" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "PCI DSS compliance for council payment platforms, explained",
+    "description": "What PCI DSS means for councils taking card payments for rates, who is responsible for what, and how tokenisation reduces risk.",
+    "image": "https://www.flexirates.com.au/assets/FR%201%20no%20bg.png",
+    "inLanguage": "en-AU",
+    "datePublished": "2026-08-11",
+    "dateModified": "2026-08-11",
+    "author": { "@type": "Organization", "name": "FlexiRates", "url": "https://www.flexirates.com.au/" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "FlexiRates",
+      "logo": { "@type": "ImageObject", "url": "https://www.flexirates.com.au/assets/FR%201%20no%20bg.png" }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.flexirates.com.au/blog/pci-dss-compliance-council-payments-explained.html" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.flexirates.com.au/" },
+      { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://www.flexirates.com.au/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "PCI DSS compliance for council payment platforms, explained", "item": "https://www.flexirates.com.au/blog/pci-dss-compliance-council-payments-explained.html" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Navigation -->
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="site-nav__inner">
+      <a href="../index.html" class="nav-logo" aria-label="FlexiRates home">
+        <img src="../assets/FR 1 no bg.png" alt="FlexiRates" class="nav-logo__img" />
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../for-councils.html">For Councils</a></li>
+        <li><a href="../for-ratepayers.html">For Ratepayers</a></li>
+        <li><a href="../security.html">Security</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html" class="btn btn-primary btn--sm">Request Demo</a></li>
+      </ul>
+      <button class="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="nav-mobile" role="dialog" aria-label="Mobile navigation">
+    <ul role="list">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../for-councils.html">For Councils</a></li>
+      <li><a href="../for-ratepayers.html">For Ratepayers</a></li>
+      <li><a href="../security.html">Security</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../faq.html">FAQ</a></li>
+    </ul>
+    <a href="../contact.html" class="btn btn-primary">Request Demo</a>
+  </div>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="hero hero--inner hero--legal" aria-labelledby="hero-heading">
+      <div class="hero__wedge--back" aria-hidden="true"></div>
+      <div class="hero__wedge" aria-hidden="true"></div>
+      <div class="hero__inner">
+        <div class="hero__content">
+          <span class="hero__eyebrow"><a href="index.html" style="color:inherit;">Resources</a> / Compliance</span>
+          <h1 class="hero__title" id="hero-heading">PCI DSS compliance for council payment platforms, explained</h1>
+          <div class="post-meta">
+            <span class="post-meta__tag">Compliance</span>
+            <span>Updated 11 August 2026</span>
+            <span>·</span>
+            <span>6 min read</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLE -->
+    <section class="section legal-section" aria-labelledby="article-heading">
+      <div class="container container--narrow">
+        <div class="legal-doc">
+          <h2 class="sr-only" id="article-heading">Article</h2>
+
+          <p class="lead">When a council lets ratepayers pay their rates by card, it becomes part of the card payments ecosystem — and that brings responsibilities around how card data is handled. PCI DSS is the security standard that governs this. This article explains, in plain terms, what PCI DSS is, why it matters for councils, who is responsible for what, and how tokenisation reduces your risk.</p>
+
+          <div class="key-takeaways">
+            <p class="key-takeaways__title">Key takeaways</p>
+            <ul>
+              <li>PCI DSS is a security standard for organisations that handle branded credit and debit cards, maintained by the PCI Security Standards Council.</li>
+              <li>Compliance is a shared responsibility: councils should ensure their payment provider is PCI DSS compliant and follow good practices themselves.</li>
+              <li>Using a compliant provider and tokenisation reduces how much card data the council handles directly, which lowers its risk.</li>
+              <li>Ask any provider how they handle card data, whether cards are tokenised, and how ratepayer information is protected.</li>
+            </ul>
+          </div>
+
+          <h2>What is PCI DSS?</h2>
+          <p>PCI DSS stands for the Payment Card Industry Data Security Standard. It is a set of security requirements for organisations that store, process, or transmit branded credit and debit card data. The standard is developed and maintained by the PCI Security Standards Council, a body founded by the major card brands to promote consistent card data security across the industry.</p>
+          <p>In broad terms, PCI DSS covers practices such as protecting stored cardholder data, encrypting card data as it moves across networks, restricting access to that data, and maintaining secure systems. The goal is simple: reduce the chance that card details are exposed or misused. Any organisation involved in card payments — including a council accepting rates by card — sits within the scope of these requirements.</p>
+
+          <h2>Why it matters for councils</h2>
+          <p>Councils handle rates payments for large numbers of ratepayers, often through recurring instalment arrangements. That means card details may be used repeatedly over time, not just once. Handling card data carries responsibility, and a lapse can expose ratepayers to fraud and damage the trust the community places in its council.</p>
+          <p>The practical implication is that a council should be confident its rates payment platform handles card data securely and in line with PCI DSS. Choosing a compliant provider is one of the most effective ways to keep the council's own exposure to card data — and therefore its risk — as low as possible, and it supports the broader obligations councils have to protect the personal information of their communities.</p>
+
+          <h2>Who is responsible? (shared responsibility)</h2>
+          <p>PCI DSS compliance is not a single box that one party ticks. It is better understood as a shared responsibility between the payment provider that operates the payment infrastructure and the council that uses it. When a council relies on a compliant provider that manages card data on its behalf, much of the technical burden of securing that data sits with the provider — but the council still has a role to play in following good practices.</p>
+          <p>The table below gives a general, qualitative view of how responsibilities are commonly divided. The exact split depends on how a council integrates with its provider, so councils should always confirm the specifics with their vendor.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Responsibility</th><th>Typically handled by</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Securely storing and processing card data</td><td>Payment provider</td></tr>
+                <tr><td>Encrypting card data in transit</td><td>Payment provider</td></tr>
+                <tr><td>Tokenising card details for future payments</td><td>Payment provider</td></tr>
+                <tr><td>Maintaining PCI DSS compliant payment infrastructure</td><td>Payment provider</td></tr>
+                <tr><td>Choosing a compliant provider and reviewing its status</td><td>Council</td></tr>
+                <tr><td>Managing staff access to admin tools appropriately</td><td>Council</td></tr>
+                <tr><td>Following good practices when handling ratepayer enquiries</td><td>Council</td></tr>
+                <tr><td>Protecting login credentials and internal systems</td><td>Council</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>How tokenisation reduces your risk</h2>
+          <p>Tokenisation is one of the most important tools for reducing risk. Instead of the council storing or seeing a ratepayer's actual card number, the payment provider replaces it with a token — a substitute value that stands in for the card for future payments. The token can be used to process the next scheduled instalment, but on its own it does not reveal the underlying card details.</p>
+          <p>The benefit for councils is meaningful. If the council never stores or handles the real card number, there is far less sensitive card data within its own environment to protect or potentially expose, which reduces both its risk and the amount of card data handling it is responsible for. Combined with encrypting card data in transit, tokenisation keeps sensitive details within the provider's secure, compliant systems rather than spread across council infrastructure.</p>
+
+          <h2>Questions to ask your payment provider</h2>
+          <p>Before choosing or renewing a rates payment platform, get clear answers on:</p>
+          <ul>
+            <li><strong>Compliance.</strong> Is your payment handling PCI DSS compliant, and how do you maintain that?</li>
+            <li><strong>Card storage.</strong> Are card numbers stored directly, or replaced with a secure token for future payments?</li>
+            <li><strong>Encryption.</strong> Is card data encrypted while it is transmitted?</li>
+            <li><strong>Access controls.</strong> How is access to admin tools and ratepayer data restricted and managed?</li>
+            <li><strong>Data protection.</strong> How is ratepayer information protected, and what audit trails exist? Benchmark the answers against our <a href="../security.html">security approach</a>.</li>
+            <li><strong>Local fit.</strong> Is the platform built for Australian local government? Our <a href="council-rates-payment-software-buyers-guide.html">buyer's guide</a> covers the wider evaluation.</li>
+          </ul>
+
+          <h2>How FlexiRates handles card security</h2>
+          <p>FlexiRates provides PCI DSS compliant payment handling for Australian councils, and is <a href="../for-councils.html">built for local government</a>. Card numbers are never stored directly — only a secure token is retained and used for future scheduled payments, so the council's environment does not hold raw card data. Card data is encrypted in transit, keeping it protected as it moves between systems.</p>
+          <p>Beyond card handling, FlexiRates applies role-based admin access so staff only reach what their role requires, secure ratepayer authentication for the self-service portal, and audit logs that record activity for accountability. FlexiRates is powered by Bill Buddy, an Australian payment provider with more than two decades of experience in recurring and scheduled payments. For more detail, see our <a href="../security.html">security page</a>, read the <a href="../faq.html">council FAQ</a>, or <a href="../contact.html">get in touch</a>.</p>
+
+          <div class="legal-doc__footer">
+            <p>This article is general information, not legal or compliance advice; councils should confirm their obligations with their own advisers and payment provider. FlexiRates is a council rates payment platform for Australian local government, powered by Bill Buddy. <a href="../contact.html">Request a demo</a> to see it in action.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" aria-labelledby="cta-heading">
+      <div class="cta-section__inner">
+        <h2 class="cta-section__title" id="cta-heading">Ready to <span class="hand-underline">modernise<svg class="hand-underline__svg" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 Q 30 2, 60 6 T 120 6 T 180 7 L 198 5"/></svg></span> rate payments?</h2>
+        <p class="cta-section__text">See how FlexiRates helps your council offer flexible rate payments while reducing admin.</p>
+        <div class="cta-section__actions">
+          <a href="../contact.html" class="btn btn-primary btn--lg">Request a Demo
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+          </a>
+          <a href="index.html" class="btn btn-ghost btn--lg">More resources</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="../index.html" class="footer__logo" aria-label="FlexiRates home">
+            <img src="../assets/FR 1 no bg.png" alt="FlexiRates" class="footer__logo-img" />
+          </a>
+          <p class="footer__tagline">Flexible rate payment solutions for Australian councils. Secure, modern, and built for local government.</p>
+          <p class="footer__powered">Powered by Bill Buddy</p>
+        </div>
+        <div>
+          <div class="footer__nav-title">Platform</div>
+          <ul class="footer__nav-list">
+            <li><a href="../for-councils.html">For Councils</a></li>
+            <li><a href="../for-ratepayers.html">For Ratepayers</a></li>
+            <li><a href="../security.html">Security</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__nav-title">Company</div>
+          <ul class="footer__nav-list">
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="../contact.html">Request Demo</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__legal">Copyright &copy; 2026 FlexiRates. Powered by Bill Buddy. All rights reserved.</p>
+        <ul class="footer__legal-links">
+          <li><a href="../privacy.html">Privacy Policy</a></li>
+          <li><a href="../terms.html">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

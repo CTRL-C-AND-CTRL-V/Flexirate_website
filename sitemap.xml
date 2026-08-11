@@ -31,6 +31,42 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.flexirates.com.au/blog/</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.flexirates.com.au/blog/council-rates-payment-software-buyers-guide.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.flexirates.com.au/blog/improve-rates-collection-reduce-arrears.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.flexirates.com.au/blog/direct-debit-vs-bpay-vs-card-council-rates.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.flexirates.com.au/blog/paper-rates-notices-to-enotices-guide.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.flexirates.com.au/blog/pci-dss-compliance-council-payments-explained.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.flexirates.com.au/about.html</loc>
     <lastmod>2026-08-11</lastmod>
     <changefreq>monthly</changefreq>
