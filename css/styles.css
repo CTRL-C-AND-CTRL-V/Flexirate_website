@@ -4840,3 +4840,25 @@ p {
   font-size: var(--fs-sm);
 }
 .post-card__link:hover { color: var(--color-orange-deep); }
+
+/* =========================================================
+   NAV ACTIVE STATE — keep the current-page label legible over the
+   navy hero AND the orange brand wedge while the nav is transparent.
+   ========================================================= */
+.nav-links a.active:not(.btn) {
+  color: #fff;
+  background: rgba(15, 19, 64, 0.6);
+  padding-left: 12px;
+  padding-right: 12px;
+  border-radius: 999px;
+}
+.nav-links a.active:not(.btn):hover {
+  color: #fff;
+}
+/* Once scrolled the nav is solid white, so revert to the orange text treatment */
+.site-nav.scrolled .nav-links a.active:not(.btn) {
+  color: var(--color-orange);
+  background: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}

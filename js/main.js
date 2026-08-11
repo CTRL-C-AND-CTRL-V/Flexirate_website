@@ -112,27 +112,30 @@
         Marks the current page's nav link with .active
      ---------------------------------------------------------- */
   function initActiveNav() {
-    var path = window.location.pathname;
-    var filename = path.split('/').pop() || 'index.html';
+    // Resolve the current page and each link to a normalised absolute path so
+    // that /blog/index.html (Resources) is not confused with /index.html (Home).
+    function norm(pathname) {
+      var p = pathname;
+      try { p = decodeURIComponent(p); } catch (e) {}
+      p = p.replace(/index\.html$/, ''); // treat /dir/index.html the same as /dir/
+      if (p.charAt(p.length - 1) !== '/') p = p + '/';
+      return p;
+    }
+    var current = norm(window.location.pathname);
 
-    // Normalise: empty or '/' means index.html
-    if (filename === '' || filename === '/') filename = 'index.html';
-
-    // Desktop links
-    $$('.nav-links a').forEach(function (link) {
+    $$('.nav-links a, .nav-mobile a').forEach(function (link) {
       var href = link.getAttribute('href') || '';
-      var linkFile = href.split('/').pop() || 'index.html';
-      if (linkFile === filename) {
-        link.classList.add('active');
+      if (!href || href.charAt(0) === '#') return;
+      var linkPath;
+      try {
+        linkPath = norm(new URL(href, window.location.href).pathname);
+      } catch (e) {
+        return;
       }
-    });
-
-    // Mobile links
-    $$('.nav-mobile a').forEach(function (link) {
-      var href = link.getAttribute('href') || '';
-      var linkFile = href.split('/').pop() || 'index.html';
-      if (linkFile === filename) {
+      if (linkPath === current) {
         link.classList.add('active');
+      } else {
+        link.classList.remove('active');
       }
     });
   }
