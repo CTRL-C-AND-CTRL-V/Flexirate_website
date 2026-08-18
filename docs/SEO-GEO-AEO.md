@@ -74,12 +74,39 @@ reduce rates arrears".
 
 ## 4. Measurement
 
+**Search performance**
 - **Google Search Console** — verify the domain, submit `sitemap.xml`, monitor impressions,
   clicks, average position, and Core Web Vitals. Watch the target keywords in §2.
 - **Bing Webmaster Tools** — verify + submit sitemap (also feeds Copilot).
-- **GA4** — set a conversion/event on the demo form submission (contact.html) to measure
-  organic → demo funnel.
 - **Rank tracking** — track the primary keywords weekly (any rank tracker).
+
+**Web analytics — Plausible (cookieless, implemented)**
+The site uses Plausible Cloud (site: `flexirates.com.au`). It is cookieless and needs no consent
+banner. The script (`pa-…js` bundle) is in every page `<head>`; custom events fire from
+`js/main.js` via `window.plausible(name, { props })`. No PII is sent.
+
+Events and properties tracked:
+
+| Event | Properties | Trigger |
+|---|---|---|
+| pageview + outbound links | (automatic) | all pages (enable outbound links in Plausible settings) |
+| `Demo Submit` (key conversion) | `page` | valid contact-form submission |
+| `CTA: Request Demo` | `location` (nav / hero / final-cta / footer / mobile-nav), `page` | any "Request a Demo" link |
+| `FAQ Open` | `question`, `page` | FAQ accordion opened |
+| `Scroll Depth` | `percent` (25/50/75/90), `page` | scroll thresholds |
+| `Video Play` / `Video Complete` | `page` | Vimeo embeds (home, case study) |
+
+Extra elements can be tagged declaratively with `data-analytics="Event Name"` +
+`data-prop-*="value"` (handled in `initAnalytics()` in `js/main.js`).
+
+**Activation checklist (Plausible dashboard):**
+1. Confirm the site `flexirates.com.au` exists; analytics only records on that production domain
+   (the github.io preview won't register — optionally add it as a second site to test).
+2. Settings → enable **Outbound links** (and File downloads if wanted).
+3. Add **Goals** for the custom events above — at minimum `Demo Submit`.
+4. Add the **custom properties** (`location`, `question`, `percent`, `page`) so they appear in
+   breakdowns (Growth/Business plan).
+5. Build a funnel: pageview → `CTA: Request Demo` → `Demo Submit`.
 
 ---
 
@@ -100,17 +127,21 @@ on-page entity statements and the `Organization`/`SoftwareApplication` schema.
 
 ---
 
-## 6. Follow-up to-dos (need info or assets)
+## 6. Follow-up to-dos
 
-- [ ] **Dedicated social share image** — add a 1200×630 PNG (e.g. `assets/og-image.png`) and
-      point all `og:image`/`twitter:image` at it. Currently they use the logo, which works but is
-      not an ideal social preview.
-- [ ] **LinkedIn URL** — provide it so we can add `sameAs` to the `Organization` schema.
-- [ ] **Bill Buddy URL** — confirm the exact URL to link `parentOrganization`/`sameAs`.
+Done:
+- [x] **Dedicated social share image** — `assets/og-image.png` (1200×630) added and wired to
+      `og:image`/`twitter:image` sitewide.
+- [x] **LinkedIn `sameAs`** — FlexiRates (`/company/flexirates`) on the Organization; Bill Buddy
+      (`/company/billbuddy-au`) on `parentOrganization`.
+- [x] **Cardinia video** — Vimeo embed + `VideoObject` schema on the case study (and homepage).
+- [x] **Cookieless analytics** — Plausible implemented (see §4).
+
+Open:
+- [ ] **Bill Buddy website URL** — add as a `url`/`sameAs` on the `parentOrganization` node if wanted.
 - [ ] **Asset filenames with spaces** (e.g. `FR 1 no bg.png`, `PCI DSS.png`) — consider renaming
       to hyphenated, lowercase files; cleaner URLs and fewer encoding issues.
-- [ ] **Cardinia video** — add a poster image and, once an upload date is known, add
-      `VideoObject` schema to the homepage testimonial.
+- [ ] **Homepage testimonial video** — add a poster image for faster first paint (optional).
 
 ---
 
