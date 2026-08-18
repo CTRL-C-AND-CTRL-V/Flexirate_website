@@ -108,6 +108,13 @@ Extra elements can be tagged declaratively with `data-analytics="Event Name"` +
    breakdowns (Growth/Business plan).
 5. Build a funnel: pageview → `CTA: Request Demo` → `Demo Submit`.
 
+> **Testing note (temporary):** the live snippet currently uses Plausible's legacy
+> multi-domain script with `data-domain="flexirates.com.au,chandan-gopinath.github.io"` so the
+> github.io preview can be tested (add `chandan-gopinath.github.io` as a Plausible site to see its
+> data separately). **Before go-live on `www.flexirates.com.au`, revert to the single production
+> snippet** (the `pa-…js` bundle from the Plausible dashboard) so preview/test traffic does not mix
+> into production stats.
+
 ---
 
 ## 5. GEO citation monitoring (run monthly)
