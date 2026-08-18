@@ -17,6 +17,16 @@
     return Array.from((context || document).querySelectorAll(selector));
   }
 
+  /* Analytics helper — sends a custom event (with optional properties) to
+     Plausible if it is loaded. Safe no-op if the script is blocked/absent. */
+  function track(name, props) {
+    try {
+      if (typeof window.plausible === 'function') {
+        window.plausible(name, props ? { props: props } : undefined);
+      }
+    } catch (e) { /* never let analytics break the page */ }
+  }
+
   /* ----------------------------------------------------------
      1. Sticky Navigation
         Adds .scrolled class to .site-nav after scrolling 10px
@@ -191,6 +201,8 @@
         if (!isOpen) {
           item.classList.add('is-open');
           btn.setAttribute('aria-expanded', 'true');
+          var q = btn.querySelector('.faq-item__question-text');
+          track('FAQ Open', { question: q ? q.textContent.trim() : '', page: window.location.pathname });
         }
       });
 
@@ -280,11 +292,89 @@
       submitBtn.textContent = 'Sending...';
       submitBtn.disabled = true;
 
+      // Conversion event — fired only on a successful, validated submission.
+      // No PII is sent (no name/email); just the page for attribution.
+      track('Demo Submit', { page: window.location.pathname });
+
       setTimeout(function () {
         form.style.display = 'none';
         if (successMsg) successMsg.classList.add('visible');
       }, 1000);
     });
+  }
+
+  /* ----------------------------------------------------------
+     7b. Analytics — CTA clicks, scroll depth, video engagement
+         (page views + outbound links are handled by the Plausible
+         script tags in the page <head>).
+     ---------------------------------------------------------- */
+  function initAnalytics() {
+    var path = window.location.pathname;
+
+    function locationOf(el) {
+      if (el.closest('.nav-mobile')) return 'mobile-nav';
+      if (el.closest('.site-nav')) return 'nav';
+      if (el.closest('.cta-section')) return 'final-cta';
+      if (el.closest('.site-footer')) return 'footer';
+      if (el.closest('.hero')) return 'hero';
+      return 'body';
+    }
+
+    // Click tracking: explicit data-analytics tags, and demo CTAs
+    document.addEventListener('click', function (e) {
+      var tagged = e.target.closest('[data-analytics]');
+      if (tagged) {
+        var props = { page: path };
+        Array.prototype.forEach.call(tagged.attributes, function (a) {
+          if (a.name.indexOf('data-prop-') === 0) {
+            props[a.name.slice(10)] = a.value;
+          }
+        });
+        track(tagged.getAttribute('data-analytics'), props);
+        return;
+      }
+      var link = e.target.closest('a');
+      if (link && /contact\.html/.test(link.getAttribute('href') || '')) {
+        track('CTA: Request Demo', { location: locationOf(link), page: path });
+      }
+    });
+
+    // Scroll depth — once per threshold per page load
+    var thresholds = [25, 50, 75, 90];
+    var fired = {};
+    window.addEventListener('scroll', function () {
+      var scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollable <= 0) return;
+      var pct = (window.scrollY / scrollable) * 100;
+      thresholds.forEach(function (t) {
+        if (pct >= t && !fired[t]) {
+          fired[t] = true;
+          track('Scroll Depth', { percent: String(t), page: path });
+        }
+      });
+    }, { passive: true });
+
+    // Video engagement — load the Vimeo Player API only if an embed exists
+    var vimeo = document.querySelector('iframe[src*="player.vimeo.com"]');
+    if (vimeo) {
+      var s = document.createElement('script');
+      s.src = 'https://player.vimeo.com/api/player.js';
+      s.async = true;
+      s.onload = function () {
+        if (!window.Vimeo) return;
+        var player = new window.Vimeo.Player(vimeo);
+        var started = false;
+        player.on('play', function () {
+          if (started) return;
+          started = true;
+          track('Video Play', { page: path });
+        });
+        player.on('ended', function () {
+          track('Video Complete', { page: path });
+        });
+      };
+      document.body.appendChild(s);
+    }
   }
 
   /* ----------------------------------------------------------
@@ -298,5 +388,6 @@
     initFadeInAnimations();
     initFAQ();
     initContactForm();
+    initAnalytics();
   });
 })();
