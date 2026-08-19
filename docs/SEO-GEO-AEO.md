@@ -90,8 +90,11 @@ Events and properties tracked:
 | Event | Properties | Trigger |
 |---|---|---|
 | pageview + outbound links | (automatic) | all pages (enable outbound links in Plausible settings) |
-| `Demo Submit` (key conversion) | `page` | valid contact-form submission |
+| `Demo Submit` (key conversion) | `page` | confirmed contact-form send |
+| `Demo Form Start` | `page` | first interaction with the contact form (abandonment funnel) |
+| `Demo Submit Error` | `page` | contact-form send failed (Web3Forms) |
 | `CTA: Request Demo` | `location` (nav / hero / final-cta / footer / mobile-nav), `page` | any "Request a Demo" link |
+| `Email Click` | `location`, `page` | any `mailto:` link (e.g. sales@billbuddy.com) — not covered by outbound-links |
 | `FAQ Open` | `question`, `page` | FAQ accordion opened |
 | `Scroll Depth` | `percent` (25/50/75/90), `page` | scroll thresholds |
 | `Video Play` / `Video Complete` | `page` | Vimeo embeds (home, case study) |

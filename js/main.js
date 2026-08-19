@@ -219,6 +219,15 @@
 
     var successMsg = $('#form-success');
 
+    // Form-start event — fired once, on first interaction, for abandonment analysis.
+    var formStarted = false;
+    form.addEventListener('focusin', function () {
+      if (!formStarted) {
+        formStarted = true;
+        track('Demo Form Start', { page: window.location.pathname });
+      }
+    });
+
     function showError(field, msg) {
       field.classList.add('error');
       var errorEl = document.getElementById(field.id + '-error');
@@ -317,6 +326,7 @@
           }
         })
         .catch(function () {
+          track('Demo Submit Error', { page: window.location.pathname });
           submitBtn.textContent = originalLabel;
           submitBtn.disabled = false;
           if (formError) {
@@ -359,7 +369,12 @@
         return;
       }
       var link = e.target.closest('a');
-      if (link && /contact\.html/.test(link.getAttribute('href') || '')) {
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      if (href.indexOf('mailto:') === 0) {
+        // mailto: clicks are NOT covered by Plausible's outbound-links extension
+        track('Email Click', { location: locationOf(link), page: path });
+      } else if (/contact\.html/.test(href)) {
         track('CTA: Request Demo', { location: locationOf(link), page: path });
       }
     });
