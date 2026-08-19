@@ -103,6 +103,13 @@
             </div>
 
             <form class="form fade-in" id="contact-form" novalidate aria-label="Request a demo">
+              <!-- Web3Forms delivery: submissions are emailed to the address tied to this access key (sales@billbuddy.com). Replace the placeholder with the real key from web3forms.com. -->
+              <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+              <input type="hidden" name="subject" value="New FlexiRates demo request" />
+              <input type="hidden" name="from_name" value="FlexiRates website" />
+              <!-- Honeypot spam trap (kept hidden from real users) -->
+              <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none !important;" />
+
               <div class="form__row">
                 <div class="form__group">
                   <label class="form__label form__label--required" for="first-name">First Name</label>
@@ -207,6 +214,8 @@
                 Send Request
                 <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
               </button>
+
+              <p class="form__error" id="form-error" role="alert" aria-live="assertive" style="display:none;"></p>
 
               <p class="form__note">
                 All enquiries are treated confidentially.

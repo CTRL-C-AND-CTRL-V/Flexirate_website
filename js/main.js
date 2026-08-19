@@ -287,19 +287,44 @@
         return;
       }
 
-      // Simulate submission (no backend)
+      // Submit to Web3Forms — emails the submission to the address tied to the
+      // access_key (sales@billbuddy.com). No backend of our own required.
       var submitBtn = form.querySelector('[type="submit"]');
+      var originalLabel = submitBtn.textContent;
+      var formError = document.getElementById('form-error');
+      if (formError) { formError.style.display = 'none'; formError.textContent = ''; }
       submitBtn.textContent = 'Sending...';
       submitBtn.disabled = true;
 
-      // Conversion event — fired only on a successful, validated submission.
-      // No PII is sent (no name/email); just the page for attribution.
-      track('Demo Submit', { page: window.location.pathname });
-
-      setTimeout(function () {
-        form.style.display = 'none';
-        if (successMsg) successMsg.classList.add('visible');
-      }, 1000);
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form)
+      })
+        .then(function (res) {
+          return res.json().catch(function () { return {}; }).then(function (data) {
+            return { ok: res.ok, data: data };
+          });
+        })
+        .then(function (result) {
+          if (result.ok && result.data && result.data.success) {
+            // Conversion event — only on a confirmed successful send. No PII sent.
+            track('Demo Submit', { page: window.location.pathname });
+            form.style.display = 'none';
+            if (successMsg) successMsg.classList.add('visible');
+          } else {
+            throw new Error((result.data && result.data.message) || 'Submission failed');
+          }
+        })
+        .catch(function () {
+          submitBtn.textContent = originalLabel;
+          submitBtn.disabled = false;
+          if (formError) {
+            formError.textContent =
+              'Sorry — something went wrong sending your request. Please email sales@billbuddy.com or try again.';
+            formError.style.display = 'block';
+          }
+        });
     });
   }
 
