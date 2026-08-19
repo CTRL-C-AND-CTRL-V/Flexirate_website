@@ -428,7 +428,8 @@ p {
   right: 0;
   z-index: 1000;
   height: var(--nav-height);
-  background: transparent;
+  background: var(--color-navy);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   transition: background var(--transition), box-shadow var(--transition);
 }
 
@@ -702,7 +703,8 @@ p {
 }
 
 .hero__title .highlight {
-  color: var(--color-orange);
+  /* White stays legible on both the navy hero base and the orange wedge. */
+  color: var(--color-white);
   font-style: normal;
   font-weight: 700;
 }
