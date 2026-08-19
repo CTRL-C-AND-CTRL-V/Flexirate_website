@@ -89,7 +89,7 @@ Events and properties tracked:
 
 | Event | Properties | Trigger |
 |---|---|---|
-| pageview + outbound links | (automatic) | all pages (enable outbound links in Plausible settings) |
+| pageview + outbound links + file downloads | (automatic) | all pages (enable outbound links & file downloads in Plausible settings) |
 | `Demo Submit` (key conversion) | `page` | confirmed contact-form send |
 | `Demo Form Start` | `page` | first interaction with the contact form (abandonment funnel) |
 | `Demo Submit Error` | `page` | contact-form send failed (Web3Forms) |
@@ -98,6 +98,12 @@ Events and properties tracked:
 | `FAQ Open` | `question`, `page` | FAQ accordion opened |
 | `Scroll Depth` | `percent` (25/50/75/90), `page` | scroll thresholds |
 | `Video Play` / `Video Complete` | `page` | Vimeo embeds (home, case study) |
+| `Video Progress` | `percent` (25/50/75), `page` | Vimeo playback milestones |
+| `CTA Click` | `label`, `destination`, `location`, `page` | any secondary button / arrow link (non-demo) |
+| `Resource Click` | `title`, `category`, `page` | article/resource cards on the hub |
+| `Nav Click` | `label`, `destination`, `location`, `page` | header, mobile-menu, and footer links |
+| `Menu Open` | `page` | mobile hamburger menu opened |
+| `Phone Click` | `location`, `page` | any `tel:` link (future-proof; none present yet) |
 
 Extra elements can be tagged declaratively with `data-analytics="Event Name"` +
 `data-prop-*="value"` (handled in `initAnalytics()` in `js/main.js`).

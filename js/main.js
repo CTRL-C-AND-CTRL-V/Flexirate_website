@@ -60,6 +60,7 @@
       mobileMenu.classList.toggle('is-open', isOpen);
       hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       document.body.style.overflow = isOpen ? 'hidden' : '';
+      if (isOpen) track('Menu Open', { page: window.location.pathname });
     }
 
     function closeMenu() {
@@ -355,27 +356,70 @@
       return 'body';
     }
 
-    // Click tracking: explicit data-analytics tags, and demo CTAs
+    function labelOf(el) {
+      return (el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80);
+    }
+    function destOf(link) {
+      var href = link.getAttribute('href') || '';
+      if (!href || href.charAt(0) === '#' || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) {
+        return href;
+      }
+      try { return new URL(href, window.location.href).pathname; } catch (e) { return href; }
+    }
+
+    // Single delegated click handler with clear precedence (first match wins),
+    // so nothing is double-counted. External non-button links fall through to
+    // Plausible's outbound-links / file-downloads extensions.
     document.addEventListener('click', function (e) {
+      // 1) Explicit manual tagging: data-analytics + data-prop-*
       var tagged = e.target.closest('[data-analytics]');
       if (tagged) {
         var props = { page: path };
         Array.prototype.forEach.call(tagged.attributes, function (a) {
-          if (a.name.indexOf('data-prop-') === 0) {
-            props[a.name.slice(10)] = a.value;
-          }
+          if (a.name.indexOf('data-prop-') === 0) props[a.name.slice(10)] = a.value;
         });
         track(tagged.getAttribute('data-analytics'), props);
         return;
       }
+
       var link = e.target.closest('a');
       if (!link) return;
       var href = link.getAttribute('href') || '';
-      if (href.indexOf('mailto:') === 0) {
-        // mailto: clicks are NOT covered by Plausible's outbound-links extension
-        track('Email Click', { location: locationOf(link), page: path });
-      } else if (/contact\.html/.test(href)) {
-        track('CTA: Request Demo', { location: locationOf(link), page: path });
+      var loc = locationOf(link);
+
+      // 2) Email / phone links (not covered by outbound-links)
+      if (href.indexOf('mailto:') === 0) { track('Email Click', { location: loc, page: path }); return; }
+      if (href.indexOf('tel:') === 0) { track('Phone Click', { location: loc, page: path }); return; }
+
+      // 3) Primary conversion CTA
+      if (/contact\.html/.test(href)) {
+        track('CTA: Request Demo', { location: loc, label: labelOf(link), page: path });
+        return;
+      }
+
+      // 4) Resource / article card
+      var card = e.target.closest('.post-card');
+      if (card) {
+        var cat = card.querySelector('.post-card__tag');
+        var ttl = card.querySelector('.post-card__title');
+        track('Resource Click', {
+          title: ttl ? labelOf(ttl) : labelOf(link),
+          category: cat ? labelOf(cat) : '',
+          page: path
+        });
+        return;
+      }
+
+      // 5) Secondary CTAs / arrow links
+      if (link.matches('.btn, .link-arrow, .post-card__link')) {
+        track('CTA Click', { label: labelOf(link) || destOf(link), destination: destOf(link), location: loc, page: path });
+        return;
+      }
+
+      // 6) Primary nav / footer links (internal wayfinding)
+      if (link.closest('.site-nav') || link.closest('.nav-mobile') || link.closest('.site-footer')) {
+        track('Nav Click', { label: labelOf(link) || destOf(link), destination: destOf(link), location: loc, page: path });
+        return;
       }
     });
 
@@ -404,10 +448,20 @@
         if (!window.Vimeo) return;
         var player = new window.Vimeo.Player(vimeo);
         var started = false;
+        var marks = { 25: false, 50: false, 75: false };
         player.on('play', function () {
           if (started) return;
           started = true;
           track('Video Play', { page: path });
+        });
+        player.on('timeupdate', function (data) {
+          var pct = data && data.percent ? data.percent * 100 : 0;
+          [25, 50, 75].forEach(function (m) {
+            if (pct >= m && !marks[m]) {
+              marks[m] = true;
+              track('Video Progress', { percent: String(m), page: path });
+            }
+          });
         });
         player.on('ended', function () {
           track('Video Complete', { page: path });
