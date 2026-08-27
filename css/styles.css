@@ -4993,3 +4993,16 @@ p {
 
 /* Hero device composition as a single image */
 .hero-shot { display: block; width: 100%; height: auto; margin-left: auto; }
+
+/* Hero screenshots inside device frames (option 1: framed dual-device) */
+.device-laptop__screen, .device-phone__screen { position: relative; }
+.hd-shot { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.hd-shot--tl { object-position: top left; }
+/* Mask the crossed-out logo at the laptop's top-left (adjust/remove after preview) */
+.hd-logo-mask { position: absolute; top: 3%; left: 3%; width: 20%; height: 11%; background: #fff; border-radius: 4px; }
+
+/* Hero: two pre-framed device mockup images (no extra CSS frames) */
+.hero-shots { position: relative; width: 100%; max-width: 660px; margin-left: auto; padding-bottom: 12px; }
+.hero-shots__desktop { display: block; width: 96%; height: auto; filter: drop-shadow(0 14px 26px rgba(10, 14, 45, 0.15)); }
+.hero-shots__mobile { position: absolute; right: 0; bottom: 0; width: 27%; height: auto; filter: drop-shadow(0 12px 22px rgba(10, 14, 45, 0.20)); }
+@media (max-width: 1024px) { .hero-shots { max-width: 520px; margin: 16px auto 0; } }
